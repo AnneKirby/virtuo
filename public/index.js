@@ -188,3 +188,35 @@ function price()
   console.log(rentals);
 }
 price()
+
+//STEP 2
+function newPrice()
+{
+  for (var car of cars)
+  {
+    for (var rental of rentals)
+    {
+      if(car.id == rental.carId)
+      {
+        var days=diffDate(dateFormat(rental.pickupDate), dateFormat(rental.returnDate));
+        var factor=0;
+        if(days>1)
+        {
+          factor=0.90;
+        }
+        if(days>4)
+        {
+          factor=0.70;
+        }
+        if(days>10)
+        {
+          factor=0.50;
+        }
+        rental.price=((car.pricePerDay*days)+(car.pricePerKm*rental.distance))*factor;
+      }
+    }
+  }
+  console.logs(rentals);
+}
+newPrice();
+      
