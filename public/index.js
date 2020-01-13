@@ -39,7 +39,7 @@ const rentals = [{
   'options': {
     'deductibleReduction': false
   },
-  'price': 36*1+0.10*100,
+  'price': 0,
   'commission': {
     'insurance': 0,
     'treasury': 0,
@@ -58,7 +58,7 @@ const rentals = [{
   'options': {
     'deductibleReduction': true
   },
-  'price': (44*5+0.30*300)*0.70,
+  'price': 0,
   'commission': {
     'insurance': 0,
     'treasury': 0,
@@ -76,7 +76,7 @@ const rentals = [{
   'options': {
     'deductibleReduction': true
   },
-  'price': (52*15+0.45*1000)*0.50,
+  'price': 0,
   'commission': {
     'insurance': 0,
     'treasury': 0,
@@ -160,3 +160,31 @@ const actors = [{
 console.log(cars);
 console.log(rentals);
 console.log(actors);
+
+//STEP 1
+function diffDate(date1, date2)
+{
+  var diffTime = date2.getTime() - date1.getTime();
+  var Diff = diffTime / (1000 * 60 * 60 * 24);
+  return Diff;
+}
+function dateFormat(input) {
+  var parts = input.match(/(\d+)/g);
+  return new Date(parts[0], parts[1]-1, parts[2]);
+}
+function price()
+{
+  for (var car of cars)
+  {
+    for (var rental of rentals)
+    {
+      if(car.id == rental.carId)
+      {
+        var days=diffDate(dateFormat(rental.pickupDate), dateFormat(rental.returnDate));
+        rental.price=(car.pricePerDay*days)+(car.pricePerKm*rental.distance);
+      }
+    }
+  }
+  console.log(rentals);
+}
+price()
