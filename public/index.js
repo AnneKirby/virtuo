@@ -220,3 +220,15 @@ function newPrice()
 }
 newPrice();
       
+//STEP 3
+function commissionRepartition()
+{
+  for (var rental of rentals)
+  {
+    rental.insurance = rental.price * 0.30 * 0.50;
+    rental.treasury = 1;
+    rental.virtuo = rental.price * 0.30 - rental.insurance - rental.treasury;
+  }
+  console.logs(rentals);
+}
+commissionRepartition();
