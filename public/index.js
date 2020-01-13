@@ -58,7 +58,7 @@ const rentals = [{
   'options': {
     'deductibleReduction': true
   },
-  'price': 44*5+0.30*300,
+  'price': (44*5+0.30*300)*0.70,
   'commission': {
     'insurance': 0,
     'treasury': 0,
@@ -76,7 +76,7 @@ const rentals = [{
   'options': {
     'deductibleReduction': true
   },
-  'price': 52*15+0.45*1000,
+  'price': (52*15+0.45*1000)*0.50,
   'commission': {
     'insurance': 0,
     'treasury': 0,
