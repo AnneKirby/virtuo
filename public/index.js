@@ -225,8 +225,9 @@ function commissionRepartition()
 {
   for (var rental of rentals)
   {
+    var days=diffDate(dateFormat(rental.pickupDate), dateFormat(rental.returnDate));
     rental.insurance = rental.price * 0.30 * 0.50;
-    rental.treasury = 1;
+    rental.treasury = 1*days;
     rental.virtuo = rental.price * 0.30 - rental.insurance - rental.treasury;
   }
   console.logs(rentals);
