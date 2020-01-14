@@ -248,3 +248,39 @@ function optionPrice()
   }
 }
 optionPrice();
+
+//STEP 5
+function payment()
+{
+  for (var rental of rentals)
+  {
+    for (var actor of actors)
+    {
+      if (actor.rentalId == rental.id)
+      {
+        if((actor.payment.who).localeCompare('driver')==0)
+        {
+          actor.payment.amount = rental.price;
+        }
+        if((actor.payment.who).localeCompare('partner')==0)
+        {
+          actor.payment.amount = rental.price - (rental.commission.insurance+rental.commission.treasury+rental.commission.virtuo);
+        }
+        if((actor.payment.who).localeCompare('insurance')==0)
+        {
+          actor.payment.amount = rental.commission.insurance;
+        }
+        if((actor.payment.who).localeCompare('treasury')==0)
+        {
+          actor.payment.amount = rental.commission.treasury;
+        }
+        if((actor.payment.who).localeCompare('virtuo')==0)
+        {
+          actor.payment.amount = rental.commission.virtuo;
+        }
+      }
+    }
+  }
+  console.logs(actors);
+}
+payment();
