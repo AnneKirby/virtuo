@@ -216,7 +216,7 @@ function newPrice()
       }
     }
   }
-  console.logs(rentals);
+  console.log(rentals);
 }
 newPrice();
       
@@ -230,7 +230,7 @@ function commissionRepartition()
     rental.commission.treasury = 1*days;
     rental.commission.virtuo = rental.price * 0.30 - rental.commission.insurance - rental.commission.treasury;
   }
-  console.logs(rentals);
+  console.log(rentals);
 }
 commissionRepartition();
 
@@ -246,6 +246,7 @@ function optionPrice()
       rental.commission.virtuo = rental.commission.virtuo+4*days;
     }
   }
+  console.log(rentals);
 }
 optionPrice();
 
@@ -281,6 +282,6 @@ function payment()
       }
     }
   }
-  console.logs(actors);
+  console.log(actors);
 }
 payment();
