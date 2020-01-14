@@ -226,10 +226,25 @@ function commissionRepartition()
   for (var rental of rentals)
   {
     var days=diffDate(dateFormat(rental.pickupDate), dateFormat(rental.returnDate));
-    rental.insurance = rental.price * 0.30 * 0.50;
-    rental.treasury = 1*days;
-    rental.virtuo = rental.price * 0.30 - rental.insurance - rental.treasury;
+    rental.commission.insurance = rental.price * 0.30 * 0.50;
+    rental.commission.treasury = 1*days;
+    rental.commission.virtuo = rental.price * 0.30 - rental.commission.insurance - rental.commission.treasury;
   }
   console.logs(rentals);
 }
 commissionRepartition();
+
+//STEP 4
+function optionPrice()
+{
+  for (var rental of rentals)
+  {
+    if(rental.options.deductibleReduction == true)
+    {
+      var days=diffDate(dateFormat(rental.pickupDate), dateFormat(rental.returnDate));
+      rental.price = rental.price+4*days;
+      rental.commission.virtuo = rental.commission.virtuo+4*days;
+    }
+  }
+}
+optionPrice();
